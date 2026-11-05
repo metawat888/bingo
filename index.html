@@ -3,69 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>คลังข้อมูลดิจิทัลออนไลน์</title>
+    <title>AILSED - คลังข้อมูลดิจิทัลออนไลน์</title>
     <style>
-        /* Anti-FOUC & Base Styling */
-        html, body { background-color: #0f172a !important; margin: 0; padding: 0; }
-        #app-container { opacity: 0; transition: opacity 0.5s ease-in-out; }
-        .card-bg { background: #1e293b; border: 1px solid #334155; }
+        html, body { background-color: #0f172a; margin: 0; padding: 0; }
+        body { opacity: 0; transition: opacity 0.3s ease-in; }
+        body.loaded { opacity: 1; }
     </style>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        tailwind.config = { darkMode: 'class', theme: { extend: { colors: { darkbg: '#0f172a' } } } }
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { extend: { colors: { darkbg: '#0f172a' } } }
+        }
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>body { font-family: 'Prompt', sans-serif; }</style>
+    <style>
+        body { font-family: 'Prompt', sans-serif; }
+        .card-hover { transition: transform 0.2s, box-shadow 0.2s; will-change: transform; }
+        .card-hover:hover { transform: translateY(-4px); box-shadow: 0 10px 25px -5px rgba(56, 189, 248, 0.15); }
+    </style>
 </head>
-<body class="text-slate-100 min-h-screen flex flex-col selection:bg-cyan-500 selection:text-white">
-    
-    <div id="app-container" class="flex flex-col min-h-screen">
-        <!-- Header -->
-        <header class="bg-slate-900/90 border-b border-slate-800 sticky top-0 z-40 backdrop-blur-md">
-            <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
-                <div class="flex items-center gap-3">
-                    <div class="bg-gradient-to-tr from-cyan-500 to-blue-600 p-2.5 rounded-xl shadow-md text-white">
-                        <i class="fa-solid fa-database"></i>
-                    </div>
-                    <h1 class="text-xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
-                        คลังข้อมูลดิจิทัลออนไลน์
-                    </h1>
-                </div>
-                
-                <div class="flex items-center gap-3 bg-slate-800 border border-slate-700 px-4 py-2 rounded-2xl">
-                    <img src="https://github.com/metawat888/Picture/raw/69f9d3a46e017adc43abb8db3503ea8106ecae61/97488303_2887790847941184_353651305119481856_n.jpg" class="w-10 h-10 rounded-full border-2 border-cyan-400 object-cover">
-                    <div class="text-left hidden sm:block">
-                        <div class="text-sm font-semibold text-slate-200">นายเมธาวัฒน์ พงสะพัง</div>
-                        <div class="text-xs text-cyan-400">ครูชำนาญการพิเศษ โรงเรียนเมืองพญาแลวิทยา</div>
-                    </div>
-                </div>
+<body class="bg-darkbg text-slate-100 min-h-screen flex flex-col justify-between selection:bg-cyan-500 selection:text-white">
+
+    <header class="bg-slate-900 border-b border-slate-800 sticky top-0 z-50 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex items-center gap-3">
+            <img src="https://github.com/metawat888/Picture/raw/69f9d3a46e017adc43abb8db3503ea8106ecae61/97488303_2887790847941184_353651305119481856_n.jpg" alt="Logo" class="w-10 h-10 rounded-full object-cover border-2 border-cyan-500 shadow-md">
+            <div>
+                <h1 class="text-xl font-bold text-white">AILSED</h1>
+                <p class="text-xs text-cyan-400">คลังข้อมูลดิจิทัลออนไลน์</p>
             </div>
-        </header>
+        </div>
+    </header>
 
-        <!-- Main Content -->
-        <main class="max-w-7xl mx-auto px-4 py-8 w-full flex-grow">
-            <!-- Search Bar -->
-            <div class="max-w-2xl mx-auto mb-10 relative">
-                <i class="fa-solid fa-search absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
-                <input type="text" id="searchInput" placeholder="ค้นหาข้อมูล แฟ้มผลงาน หรือสื่อการสอน..." 
-                       class="w-full bg-slate-900 border border-slate-700 rounded-2xl py-3 pl-12 pr-4 text-white placeholder-slate-500 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500 transition-all shadow-lg">
+    <main class="max-w-7xl mx-auto px-4 py-8 flex-grow w-full">
+        <div class="mb-8 max-w-2xl mx-auto">
+            <div class="relative">
+                <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                    <i class="fa-solid fa-magnifying-glass text-slate-400"></i>
+                </div>
+                <input type="text" id="searchInput" onkeyup="filterItems()" class="block w-full pl-11 pr-4 py-3.5 border border-slate-700 rounded-xl bg-slate-800/50 text-slate-100 placeholder-slate-400 focus:outline-none focus:ring-1 focus:ring-cyan-500 focus:border-cyan-500 focus:bg-slate-800 transition-all shadow-sm" placeholder="ค้นหาเอกสาร สื่อ หรือแฟ้มผลงาน...">
             </div>
+        </div>
 
-            <!-- Grid Container for Dynamic Cards -->
-            <div id="gridContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"></div>
-        </main>
-    </div>
+        <div id="gridContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        </div>
+    </main>
 
-    <!-- Modal Viewer -->
-    <div id="resourceModal" class="fixed inset-0 bg-black/90 z-50 hidden flex flex-col p-2 sm:p-6 backdrop-blur-sm">
-        <div class="w-full max-w-6xl mx-auto h-full flex flex-col bg-slate-900 rounded-2xl border border-slate-700 overflow-hidden shadow-2xl">
-            <div class="flex justify-between items-center bg-slate-800 p-4 border-b border-slate-700">
-                <h3 id="modalTitle" class="font-bold text-white text-lg flex items-center gap-2">
-                    <i class="fa-solid fa-folder-open text-cyan-400"></i> <span id="modalTitleText"></span>
-                </h3>
-                <button onclick="closeModal()" class="text-slate-400 hover:text-white bg-slate-700 hover:bg-slate-600 p-2 rounded-xl transition">
-                    <i class="fa-solid fa-xmark text-xl"></i>
+    <footer class="bg-slate-900 border-t border-slate-800 py-6 mt-12 text-center text-xs text-slate-400">
+        <div class="max-w-7xl mx-auto px-4">
+            <p>จัดทำโดย: นายเมธาวัฒน์ พงสะพัง</p>
+        </div>
+    </footer>
+
+    <div id="resourceModal" class="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-700 w-full max-w-5xl h-[85vh] rounded-2xl flex flex-col overflow-hidden shadow-2xl">
+            <div class="px-5 py-3 bg-slate-800 border-b border-slate-700 flex justify-between items-center">
+                <h3 id="modalTitleText" class="text-sm sm:text-base font-bold text-white truncate pr-4">ชื่อเอกสาร</h3>
+                <button onclick="closeModal()" class="text-slate-400 hover:text-white bg-slate-700/50 hover:bg-slate-700 p-2 rounded-lg transition-colors flex-shrink-0">
+                    <i class="fa-solid fa-xmark text-lg leading-none"></i>
                 </button>
             </div>
             <div class="flex-grow bg-slate-950 relative">
@@ -74,113 +70,104 @@
         </div>
     </div>
 
-    <!-- Application Script -->
     <script>
-        // Database for future expansions
+        window.addEventListener('DOMContentLoaded', () => {
+            document.body.classList.add('loaded');
+        });
+
         const database = [
-            { 
-                id: 'ailab', 
-                title: 'ปฏิบัติการทดลองเสมือนจริง', 
-                subtitle: 'Ai Lab Virtual Laboratory', 
-                image: 'https://live.staticflickr.com/65535/55633632484_bcce7c9dea.jpg', 
-                url: 'https://ailabv2.vercel.app/' 
+            {
+                id: 'ailab',
+                title: 'ปฏิบัติการทดลองเสมือนจริง (Ai Lab)',
+                subtitle: 'ผ่านอุปกรณ์อิเล็กทรอนิกส์อัจฉริยะ',
+                image: 'https://live.staticflickr.com/65535/55633632484_bcce7c9dea.jpg',
+                url: 'https://ailabv2.vercel.app/'
             },
-            { 
-                id: 'knowledge', 
-                title: 'ใบความรู้วิชาวิทยาศาสตร์', 
-                subtitle: 'เนื้อหาและทฤษฎีบทเรียน', 
-                image: 'https://live.staticflickr.com/65535/55633854955_5c5b95b7fb.jpg', 
-                url: 'https://online.fliphtml5.com/Ailabv2/knowledge-sheet-2-69/#p=1' 
+            {
+                id: 'knowledge',
+                title: 'ใบความรู้วิชาวิทยาศาสตร์',
+                subtitle: 'เรื่อง ปฏิกิริยาเคมี ไฟฟ้า อิเล็กทรอนิกส์ ระบบนิเวศ',
+                image: 'https://live.staticflickr.com/65535/55633854955_5c5b95b7fb.jpg',
+                url: 'https://online.fliphtml5.com/Ailabv2/knowledge-sheet-2-69/#p=1'
             },
-            { 
-                id: 'worksheet', 
-                title: 'ใบงานวิทยาศาสตร์', 
-                subtitle: 'แบบฝึกหัดทบทวนความรู้', 
-                image: 'https://live.staticflickr.com/65535/55633565833_905dee699c.jpg', 
-                url: 'https://online.fliphtml5.com/Ailabv2/student-worksheet-2-69/' 
+            {
+                id: 'worksheet',
+                title: 'ใบงานวิทยาศาสตร์',
+                subtitle: 'ชั้นมัธยมศึกษาปีที่ 3 ภาคเรียนที่ 2',
+                image: 'https://live.staticflickr.com/65535/55633565833_905dee699c.jpg',
+                url: 'https://online.fliphtml5.com/Ailabv2/student-worksheet-2-69/'
             },
-            { 
-                id: 'exam', 
-                title: 'ข้อสอบวิทยาศาสตร์', 
-                subtitle: 'แบบทดสอบประเมินผล', 
-                image: 'https://live.staticflickr.com/65535/55633432381_e39bc33bdb.jpg', 
-                url: 'https://online.fliphtml5.com/Ailabv2/student-end-of-chapter-test/#p=1' 
+            {
+                id: 'exam',
+                title: 'ข้อสอบวิทยาศาสตร์',
+                subtitle: 'แบบทดสอบและประเมินผลสัมฤทธิ์ทางการเรียน',
+                image: 'https://live.staticflickr.com/65535/55633432381_e39bc33bdb.jpg',
+                url: 'https://online.fliphtml5.com/Ailabv2/student-end-of-chapter-test/#p=1'
             },
-            { 
-                id: 'PA70', 
-                title: 'PA 70-1', 
-                subtitle: 'ข้อตกลง PA ชำนาญการพิเศษ 70', 
-                image: 'https://live.staticflickr.com/65535/55634253260_5c2b343b00.jpg', 
-                url: 'https://online.fliphtml5.com/Ailabv2/hhzx/' 
+            {
+                id: 'PA70',
+                title: 'PA 70-1',
+                subtitle: 'ข้อตกลง PA ชำนาญการพิเศษ 70',
+                image: 'https://live.staticflickr.com/65535/55634253260_5c2b343b00.jpg',
+                url: 'https://online.fliphtml5.com/Ailabv2/hhzx/'
             }
         ];
 
-        // Render function
-        function renderCards(data) {
+        function renderItems(items) {
             const container = document.getElementById('gridContainer');
-            if(data.length === 0) {
+            container.innerHTML = '';
+            
+            if (items.length === 0) {
                 container.innerHTML = '<div class="col-span-full text-center py-10 text-slate-500">ไม่พบข้อมูลที่ค้นหา</div>';
                 return;
             }
 
-            container.innerHTML = data.map(item => `
-                <div class="card-bg rounded-2xl overflow-hidden flex flex-col h-full shadow-lg group hover:-translate-y-1 transition-transform duration-300">
-                    
-                    <!-- 1. Title Area (Placed ABOVE the image) -->
-                    <div class="p-4 bg-slate-800/60 border-b border-slate-700/50 text-center">
-                        <h3 class="font-bold text-white text-base truncate group-hover:text-cyan-400 transition-colors">${item.title}</h3>
-                        <p class="text-xs text-slate-400 mt-1 truncate">${item.subtitle}</p>
+            items.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'bg-slate-800 border border-slate-700 rounded-xl overflow-hidden shadow-lg card-hover flex flex-col';
+                card.innerHTML = `
+                    <div class="px-4 py-3 border-b border-slate-700 bg-slate-800">
+                        <h3 class="font-bold text-sm text-white truncate" title="${item.title}">${item.title}</h3>
+                        <p class="text-xs text-cyan-400 truncate mt-0.5" title="${item.subtitle}">${item.subtitle}</p>
                     </div>
-                    
-                    <!-- 2. Image Area (A4 aspect ratio, object-contain) -->
-                    <div class="w-full aspect-[210/297] bg-slate-950 flex-grow p-3 flex items-center justify-center overflow-hidden relative">
-                        <img src="${item.image}" alt="${item.title}" class="max-w-full max-h-full object-contain drop-shadow-2xl">
+                    <div class="bg-slate-900 w-full aspect-[210/297] flex items-center justify-center border-b border-slate-700 p-2">
+                        <img src="${item.image}" alt="${item.title}" class="w-full h-full object-contain">
                     </div>
-
-                    <!-- 3. Button Area -->
-                    <div class="p-3 bg-slate-800/60 border-t border-slate-700/50">
-                        <button onclick="openModal('${item.id}')" class="w-full py-2.5 bg-gradient-to-r from-cyan-700 to-blue-700 hover:from-cyan-600 hover:to-blue-600 text-white rounded-xl text-sm font-medium transition-all shadow-md flex items-center justify-center gap-2">
+                    <div class="p-3 bg-slate-900 text-center">
+                        <button onclick="openModal('${item.id}')" class="w-full py-2 px-4 bg-cyan-600 hover:bg-cyan-500 text-white font-medium rounded-lg text-sm transition flex items-center justify-center gap-2">
                             <i class="fa-solid fa-folder-open"></i> เปิดข้อมูล
                         </button>
                     </div>
-                </div>
-            `).join('');
+                `;
+                container.appendChild(card);
+            });
         }
 
-        // Search logic
-        document.getElementById('searchInput').addEventListener('input', (e) => {
-            const term = e.target.value.toLowerCase();
-            renderCards(database.filter(item => 
-                item.title.toLowerCase().includes(term) || 
-                item.subtitle.toLowerCase().includes(term)
-            ));
-        });
+        function filterItems() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const filtered = database.filter(item => 
+                item.title.toLowerCase().includes(query) || 
+                item.subtitle.toLowerCase().includes(query)
+            );
+            renderItems(filtered);
+        }
 
-        // Modal logic
+        renderItems(database);
+
         function openModal(id) {
-            const item = database.find(i => i.id === id);
-            if (item) {
-                document.getElementById('modalTitleText').innerText = item.title;
-                document.getElementById('modalIframe').src = item.url;
-                document.getElementById('resourceModal').classList.remove('hidden');
-                document.body.style.overflow = 'hidden';
-            }
+            const item = database.find(x => x.id === id);
+            if (!item) return;
+            document.getElementById('modalTitleText').innerText = item.title;
+            document.getElementById('modalIframe').src = item.url;
+            document.getElementById('resourceModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
         }
-        
+
         function closeModal() {
             document.getElementById('resourceModal').classList.add('hidden');
             document.getElementById('modalIframe').src = '';
             document.body.style.overflow = 'auto';
         }
-
-        // Initialize App
-        window.onload = () => {
-            renderCards(database);
-            // Reveal UI smoothly to prevent FOUC
-            setTimeout(() => {
-                document.getElementById('app-container').style.opacity = '1';
-            }, 100);
-        };
     </script>
 </body>
 </html>
