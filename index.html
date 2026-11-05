@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="th" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>คลังใบงานและสื่อการเรียนรู้ออนไลน์ - วิทยาศาสตร์ ม.3 เทอม 2</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        darkbg: '#0f172a',
+                        cardbg: '#1e293b',
+                        accent: '#38bdf8'
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts (Prompt) -->
+    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Prompt', sans-serif;
+        }
+        .book-card {
+            transition: all 0.3s ease;
+        }
+        .book-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(56, 189, 248, 0.2), 0 10px 10px -5px rgba(56, 189, 248, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-darkbg text-slate-100 min-h-screen flex flex-col justify-between selection:bg-cyan-500 selection:text-white">
+
+    <!-- Header / Navbar -->
+    <header class="bg-slate-900/80 backdrop-blur-md border-b border-slate-800 sticky top-0 z-50 shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <div class="bg-gradient-to-tr from-cyan-500 to-blue-600 p-2.5 rounded-xl shadow-md text-white font-bold text-xl">
+                    <i class="fa-solid fa-atom"></i>
+                </div>
+                <div>
+                    <h1 class="text-xl sm:text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
+                        AILSED - คลังสื่อการเรียนรู้ออนไลน์
+                    </h1>
+                    <p class="text-xs text-slate-400">ห้องเรียนวิทยาศาสตร์พื้นฐาน 6 ม.3 เทอม 2</p>
+                </div>
+            </div>
+
+            <!-- Teacher Profile Badge -->
+            <div class="flex items-center gap-3 bg-slate-800/90 border border-slate-700/80 px-4 py-2 rounded-2xl shadow-sm">
+                <img src="https://github.com/metawat888/Picture/raw/69f9d3a46e017adc43abb8db3503ea8106ecae61/97488303_2887790847941184_353651305119481856_n.jpg" alt="ครูเมธาวัฒน์" class="w-10 h-10 rounded-full object-cover border-2 border-cyan-400 shadow">
+                <div class="text-left">
+                    <div class="text-sm font-semibold text-slate-200">นายเมธาวัฒน์ พงสะพัง</div>
+                    <div class="text-xs text-cyan-400">ครูชำนาญการพิเศษ โรงเรียนเมืองพญาแลวิทยา</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="max-w-7xl mx-auto px-4 py-10 flex-grow w-full">
+        
+        <!-- Section Title -->
+        <div class="text-center mb-10">
+            <h2 class="text-2xl sm:text-3xl font-bold text-white mb-2">สื่อการสอนและคลังใบงานดิจิทัล</h2>
+            <p class="text-slate-400 max-w-2xl mx-auto text-sm sm:text-base">
+                คลิกเลือกสื่อการเรียนรู้ บทเรียนเสมือนจริง ใบความรู้ ใบงาน หรือข้อสอบ เพื่อเข้าใช้งานระบบออนไลน์ได้ทันที
+            </p>
+        </div>
+
+        <!-- Book Cards Grid (4 Modules) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            
+            <!-- 1. Ai Lab (ปฏิบัติการทดลองเสมือนจริง) -->
+            <div class="book-card bg-slate-800/80 border border-slate-700 rounded-2xl overflow-hidden flex flex-col justify-between shadow-xl">
+                <div class="p-4 bg-slate-900/60 border-b border-slate-700/50 flex justify-between items-center">
+                    <span class="text-xs font-semibold px-2.5 py-1 bg-cyan-500/10 text-cyan-400 rounded-full border border-cyan-500/20">
+                        <i class="fa-solid fa-vr-cardboard mr-1"></i> Virtual Lab
+                    </span>
+                    <span class="text-xs text-slate-400">ปีการศึกษา 2/2569</span>
+                </div>
+                <div class="p-5 flex flex-col items-center flex-grow">
+                    <div class="w-full rounded-xl overflow-hidden shadow-lg mb-4 border border-slate-700 bg-slate-900 aspect-[3/4] flex items-center justify-center">
+                        <img src="https://live.staticflickr.com/65535/55633632484_bcce7c9dea.jpg" alt="Ai Lab" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="font-bold text-base text-white text-center mb-2">ปฏิบัติการทดลองเสมือนจริง (Ai Lab)</h3>
+                    <p class="text-xs text-slate-400 text-center mb-4">ผ่านอุปกรณ์อิเล็กทรอนิกส์อัจฉริยะ</p>
+                </div>
+                <div class="p-4 bg-slate-900/40 border-t border-slate-700/50 text-center">
+                    <button onclick="openModal('ailab')" class="w-full py-2.5 px-4 bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-cyan-500 hover:to-blue-500 text-white font-medium rounded-xl text-sm shadow-md transition flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-arrow-up-right-from-square"></i> เข้าสู่บทเรียน
+                    </button>
+                </div>
+            </div>
+
+            <!-- 2. ใบความรู้ วิชาวิทยาศาสตร์ -->
+            <div class="book-card bg-slate-800/80 border border-slate-700 rounded-2xl overflow-hidden flex flex-col justify-between shadow-xl">
+                <div class="p-4 bg-slate-900/60 border-b border-slate-700/50 flex justify-between items-center">
+                    <span class="text-xs font-semibold px-2.5 py-1 bg-emerald-500/10 text-emerald-400 rounded-full border border-emerald-500/20">
+                        <i class="fa-solid fa-book-open mr-1"></i> ใบความรู้
+                    </span>
+                    <span class="text-xs text-slate-400">ม.3 เทอม 2</span>
+                </div>
+                <div class="p-5 flex flex-col items-center flex-grow">
+                    <div class="w-full rounded-xl overflow-hidden shadow-lg mb-4 border border-slate-700 bg-slate-900 aspect-[3/4] flex items-center justify-center">
+                        <img src="https://live.staticflickr.com/65535/55633854955_5c5b95b7fb.jpg" alt="ใบความรู้" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="font-bold text-base text-white text-center mb-2">ใบความรู้วิชาวิทยาศาสตร์</h3>
+                    <p class="text-xs text-slate-400 text-center mb-4">เรื่อง ปฏิกิริยาเคมี ไฟฟ้า อิเล็กทรอนิกส์ ระบบนิเวศ</p>
+                </div>
+                <div class="p-4 bg-slate-900/40 border-t border-slate-700/50 text-center">
+                    <button onclick="openModal('knowledge')" class="w-full py-2.5 px-4 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-medium rounded-xl text-sm shadow-md transition flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-book-reader"></i> เปิดอ่านหนังสือ
+                    </button>
+                </div>
+            </div>
+
+            <!-- 3. ใบงานวิทยาศาสตร์ -->
+            <div class="book-card bg-slate-800/80 border border-slate-700 rounded-2xl overflow-hidden flex flex-col justify-between shadow-xl">
+                <div class="p-4 bg-slate-900/60 border-b border-slate-700/50 flex justify-between items-center">
+                    <span class="text-xs font-semibold px-2.5 py-1 bg-amber-500/10 text-amber-400 rounded-full border border-amber-500/20">
+                        <i class="fa-solid fa-file-pen mr-1"></i> ใบงาน
+                    </span>
+                    <span class="text-xs text-slate-400">ม.3 ภาคเรียนที่ 2</span>
+                </div>
+                <div class="p-5 flex flex-col items-center flex-grow">
+                    <div class="w-full rounded-xl overflow-hidden shadow-lg mb-4 border border-slate-700 bg-slate-900 aspect-[3/4] flex items-center justify-center">
+                        <img src="https://live.staticflickr.com/65535/55633565833_905dee699c.jpg" alt="ใบงาน" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="font-bold text-base text-white text-center mb-2">ใบงานวิทยาศาสตร์</h3>
+                    <p class="text-xs text-slate-400 text-center mb-4">ชั้นมัธยมศึกษาปีที่ 3 ภาคเรียนที่ 2</p>
+                </div>
+                <div class="p-4 bg-slate-900/40 border-t border-slate-700/50 text-center">
+                    <button onclick="openModal('worksheet')" class="w-full py-2.5 px-4 bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 text-white font-medium rounded-xl text-sm shadow-md transition flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-pen-to-square"></i> ทำใบงานออนไลน์
+                    </button>
+                </div>
+            </div>
+
+            <!-- 4. ข้อสอบวิทยาศาสตร์ -->
+            <div class="book-card bg-slate-800/80 border border-slate-700 rounded-2xl overflow-hidden flex flex-col justify-between shadow-xl">
+                <div class="p-4 bg-slate-900/60 border-b border-slate-700/50 flex justify-between items-center">
+                    <span class="text-xs font-semibold px-2.5 py-1 bg-rose-500/10 text-rose-400 rounded-full border border-rose-500/20">
+                        <i class="fa-solid fa-clipboard-question mr-1"></i> ข้อสอบ
+                    </span>
+                    <span class="text-xs text-slate-400">AILSED 2-2569</span>
+                </div>
+                <div class="p-5 flex flex-col items-center flex-grow">
+                    <div class="w-full rounded-xl overflow-hidden shadow-lg mb-4 border border-slate-700 bg-slate-900 aspect-[3/4] flex items-center justify-center">
+                        <img src="https://live.staticflickr.com/65535/55633432381_e39bc33bdb.jpg" alt="ข้อสอบ" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="font-bold text-base text-white text-center mb-2">ข้อสอบวิทยาศาสตร์</h3>
+                    <p class="text-xs text-slate-400 text-center mb-4">แบบทดสอบและประเมินผลสัมฤทธิ์ทางการเรียน</p>
+                </div>
+                <div class="p-4 bg-slate-900/40 border-t border-slate-700/50 text-center">
+                    <button onclick="openModal('exam')" class="w-full py-2.5 px-4 bg-gradient-to-r from-rose-600 to-pink-600 hover:from-rose-500 hover:to-pink-500 text-white font-medium rounded-xl text-sm shadow-md transition flex items-center justify-center gap-2">
+                        <i class="fa-solid fa-file-lines"></i> ทำแบบทดสอบ
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Modal Viewer -->
+    <div id="resourceModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-700 w-full max-w-5xl h-[85vh] rounded-2xl flex flex-col overflow-hidden shadow-2xl">
+            <div class="px-6 py-4 bg-slate-800 border-b border-slate-700 flex justify-between items-center">
+                <h3 id="modalTitle" class="text-lg font-bold text-white flex items-center gap-2">
+                    <i class="fa-solid fa-book text-cyan-400"></i> <span id="modalTitleText">ชื่อบทเรียน</span>
+                </h3>
+                <button onclick="closeModal()" class="text-slate-400 hover:text-white bg-slate-700/50 hover:bg-slate-700 p-2 rounded-xl transition">
+                    <i class="fa-solid fa-xmark text-lg"></i>
+                </button>
+            </div>
+            <div class="flex-grow bg-slate-950 relative">
+                <iframe id="modalIframe" src="" class="w-full h-full border-0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900/90 border-t border-slate-800 py-6 mt-12 text-center text-xs text-slate-400">
+        <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div>
+                <p class="font-medium text-slate-300">ห้องเรียนวิทยาศาสตร์พื้นฐาน 6 ม.3 เทอม 2 | โรงเรียนเมืองพญาแลวิทยา สพม.ชัยภูมิ</p>
+            </div>
+            <div>
+                <p>จัดทำโดย: นายเมธาวัฒน์ พงสะพัง (ครูชำนาญการพิเศษ)</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script Handler -->
+    <script>
+        const links = {
+            ailab: {
+                title: "ปฏิบัติการทดลองเสมือนจริง (Ai Lab)",
+                url: "https://ailabv2.vercel.app/"
+            },
+            knowledge: {
+                title: "ใบความรู้วิชาวิทยาศาสตร์ (ม.3 เทอม 2)",
+                url: "https://online.fliphtml5.com/Ailabv2/knowledge-sheet-2-69/#p=1"
+            },
+            worksheet: {
+                title: "ใบงานวิทยาศาสตร์ ชั้นมัธยมศึกษาปีที่ 3 ภาคเรียนที่ 2",
+                url: "https://online.fliphtml5.com/Ailabv2/student-worksheet-2-69/"
+            },
+            exam: {
+                title: "ข้อสอบวิทยาศาสตร์ AILSED",
+                url: "https://online.fliphtml5.com/Ailabv2/student-end-of-chapter-test/#p=1"
+            }
+        };
+
+        function openModal(type) {
+            const item = links[type];
+            if (!item) return;
+            
+            document.getElementById('modalTitleText').innerText = item.title;
+            document.getElementById('modalIframe').src = item.url;
+            document.getElementById('resourceModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('resourceModal').classList.add('hidden');
+            document.getElementById('modalIframe').src = '';
+        }
+
+        // Close modal on outside click
+        window.onclick = function(event) {
+            const modal = document.getElementById('resourceModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
